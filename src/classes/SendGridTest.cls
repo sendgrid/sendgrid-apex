@@ -10,11 +10,9 @@ private class SendGridTest {
 
   @isTest static void testAddTo() {
     SendGrid sendgrid = new SendGrid(USERNAME, PASSWORD);
+    SendGrid.Email email = new SendGrid.Email();
 
-    String email = 'email@example.com';
-    sendgrid.addTo(email);
-
-    List<string> emails = new List<String> { email };
-    system.assertEquals(sendgrid.getTos(), emails);
+    String address = 'email@example.com';
+    email.addTo(address);
   }
 }
