@@ -95,16 +95,24 @@ private class SmtpapiTest {
     system.assertEquals('{\"filters\":{\"footer\":{\"settings\":{\"text/html\":\"<strong>boo</strong>\"}}}}', header.jsonString());
   }
 
+  @isTest static void testAddFilterMultiple() {
+    Smtpapi.Header header = new Smtpapi.Header();
+
+    header.addFilter('footer', 'enable', '1');
+    header.addFilter('footer', 'text/html', '<strong>boo</strong>');
+    system.assertEquals('{\"filters\":{\"footer\":{\"settings\":{\"text/html\":\"<strong>boo</strong>\",\"enable\":\"1\"}}}}', header.jsonString());
+  }
+
   @isTest static void setSetFilters() {
     Smtpapi.Header header = new Smtpapi.Header();
 
     Map<String, Map<String, Map<String,String>>> filters = new Map<String, Map<String, Map<String,String>>>();
     filters.put('footer', new Map<String, Map<String,String>>());
-    filters.get('footer').put('setting', new Map<String,String>());
-    filters.get('footer').get('setting').put('enable', '1');
-    filters.get('footer').get('setting').put('text/plain', 'You can haz footers!');
+    filters.get('footer').put('settings', new Map<String,String>());
+    filters.get('footer').get('settings').put('enable', '1');
+    filters.get('footer').get('settings').put('text/plain', 'You can haz footers!');
 
     header.setFilters(filters);
-    system.assertEquals('{\"filters\":{\"footer\":{\"setting\":{\"enable\":\"1\",\"text/plain\":\"You can haz footers!\"}}}}', header.jsonString());
+    system.assertEquals('{\"filters\":{\"footer\":{\"settings\":{\"enable\":\"1\",\"text/plain\":\"You can haz footers!\"}}}}', header.jsonString());
   }
 }

@@ -100,10 +100,14 @@ global class Smtpapi {
     }
 
     public Header addFilter(String filter_name, String parameter_name, String parameter_value) {
-
-      Map<String, String> settings = new Map<String, String> { parameter_name => parameter_value };
-      Map<String, Map<String, String>> filter_value = new Map<String, Map<String, String>> { 'settings' => settings };
-      this.filters.put(filter_name, filter_value);
+      Map<String, Map<String,String>> filter_name_map;
+      if (this.filters.get(filter_name) == null) {
+        filter_name_map = new Map<String, Map<String,String>>();
+        this.filters.put(filter_name, filter_name_map);
+        this.filters.get(filter_name).put('settings', new Map<String,String>());
+      }
+      
+      this.filters.get(filter_name).get('settings').put(parameter_name, parameter_value);
       
       return this;
     }
