@@ -7,4 +7,6 @@ Referenced Packages
 config
 sendgrid-salesforce.sublime-workspace
 sendgrid-salesforce.sublime-project
+deploy/
+debug/
 
