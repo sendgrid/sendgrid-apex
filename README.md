@@ -42,28 +42,25 @@ Then on the left side of the screen click "Personal > Reset My Security Token". 
 
 Open up Sublime Text 3, and then open up Mavens Mate on your machine. There should be a Mavens Mate icon, at the top bar of your screen. Click it and then click "Plugins".
 
+![](https://raw.githubusercontent.com/scottmotte/apex-hello-world/master/apex-hello-world-1.png)
+
 On the next window, click "Install Plugin". This installs the Mavens Mate plugin into Sublime Text 3.
 
 Close and reopen Sublime Text 3.
 
 Click Mavens Mate > Settings > User at the top Sublime Text 3 Toolbar.
 
-This will open a file called `mavensmate.sublime-settings`. Paste the following in that file. Adjust to the path and directory you want to store your salesforce code in. It must be an absolute path.
+![](https://raw.githubusercontent.com/scottmotte/apex-hello-world/master/apex-hello-world-2.png)
+
+This will open a file called `mavensmate.sublime-settings`. Paste the following in that file. Adjust to the path and directory you want to store your salesforce code in.
 
 ```json
 {
-  "mm_workspace": "/Users/your_username/code/salesforce"
+  "mm_workspace": "/Users/scottmotte/code/salesforce"
 }
 ```
 
 Save and close that file.
-
-### Clone the library
-
-```
-cd /Users/your_username/code/salesforce
-git clone https://github.com/scottmotte/sendgrid-salesforce.git
-```
 
 ### Open the project
 
