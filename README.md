@@ -20,6 +20,8 @@ Send it.
 
 ## Development
 
+Getting your development environment setup to code on this project is difficult. The following explains how.
+
 ### Setup Salesforce.com
 
 [Create a salesforce.com developer account](https://developer.salesforce.com/signup).
