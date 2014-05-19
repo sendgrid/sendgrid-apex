@@ -6,6 +6,8 @@ This Apex library allows you to quickly and easily send emails through SendGrid 
 
 To begin using this library, initialize the SendGrid object with your SendGrid credentials.
 
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
+
 ```java
 code
 ```
@@ -79,16 +81,19 @@ On the next screen enter the following:
 * For project name: 'sendgrid-salesforce' 
 * For username: enter your email address
 * For password: enter your password APPENDED with your salesforce security token. (see above for how to generate the security token) 
-* Click the Advanced tab and unselect everything except ApexClass and CustomObject.
 
 When you're ready click the 'Create Project' button.
 
-This will create the project up on Salesforce.com and locally on your machine. That's what we want. It's the way salesforce development works. Now when we develop locally it will sync things up remotely.
+This will create the project up on Salesforce.com and locally on your machine. That's what we want.
+
+Next, the final and most important step.
+
+Click "Mavens Mate > Project > Compile Project".
 
 ### You're done
 
 You're done!
 
-Now go ahead and develop. I recommend [this tutorial](https://github.com/scottmotte/apex-hello-world) for learning some basics of developing with Apex.
+Now go ahead and develop. I recommend [this tutorial](https://github.com/scottmotte/apex-hello-world) or [this blog post](http://sendgrid.com/blog/hello-world-apex/) for learning some basics of developing with Apex.
 
 
