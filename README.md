@@ -63,7 +63,7 @@ Save and close that file.
 ### Clone the repo
 
 ```
-cd /Users/your_username/code/salesfroce
+cd /Users/your_username/code/salesforce
 git clone https://github.com/scottmotte/sendgrid-salesforce.git
 ```
 ### Open the project
