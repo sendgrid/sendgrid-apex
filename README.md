@@ -1,8 +1,35 @@
 # sendgrid-salesforce
 
-This Apex library allows you to quickly and easily send emails through SendGrid using Salesforce Apex.
+This Apex Toolkit allows you to quickly and easily send emails through SendGrid using Salesforce Apex.
+
+```java
+SendGrid sendgrid = new SendGrid('username', 'password');
+
+SendGrid.email email = new SendGrid.Email();
+email.addTo('foo@bar.com');
+email.setFrom('me@bar.com');
+email.setSubject('Subject goes here');
+email.setText('Hello World!');
+
+String response = sendgrid.send(email);
+```
+
+## Installation
+
+### Install the Package
+
+To start using the SendGrid Apex Toolkit in your Salesforce Org, install the unmanaged package of the library with the following URL:
 
 <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
+
+Click Continue -> Next -> Next -> Install.
+
+### Add Remote Site
+
+Interacting with the SendGrid API requires a new remote site setting.
+
+* Add a remote site for SendGrid API site in the "Administration Setup > Security Controls > Remote Site Setting > New Remote Site".
+* Create new remote site and set https://api.sendgrid.com in the Remote Site URL.
 
 ## Usage
 
@@ -27,7 +54,7 @@ email.setHtml('<strong>Hello World!</strong>');
 Send it.
 
 ```
-sendgrid.send(email);
+String response = sendgrid.send(email);
 ```
 
 ### addTo
@@ -232,4 +259,10 @@ You're done!
 
 Now go ahead and develop. I recommend [this tutorial](https://github.com/scottmotte/apex-hello-world) or [this blog post](http://sendgrid.com/blog/hello-world-apex/) for learning some basics of developing with Apex.
 
+## Contributing
 
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

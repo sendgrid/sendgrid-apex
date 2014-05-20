@@ -1,6 +1,7 @@
 global class SendGrid {
   private static final String ENCODING = 'UTF-8';
-
+  private static final String API_URL = 'http://api.sendgrid.com/api/mail.send.json';
+  
   private String username;
   private String password;
 
@@ -27,7 +28,7 @@ global class SendGrid {
     HttpResponse res = new HttpResponse();
     Http http = new Http();
 
-    req.setEndpoint('http://api.sendgrid.com/api/mail.send.json');
+    req.setEndpoint(API_URL);
     req.setMethod('POST');
     req.setBody(body);
     req.setCompressed(true); // otherwise we hit a limit of 32000
