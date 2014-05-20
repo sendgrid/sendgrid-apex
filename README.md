@@ -229,19 +229,19 @@ Save and close that file.
 
 ```
 cd /Users/your_username/code/salesforce
-git clone https://github.com/scottmotte/sendgrid-salesforce.git
+git clone https://github.com/scottmotte/sendgrid-apex.git
 ```
 ### Open the project
 
-With Sublime Text 3 still open, click "File > Open", and open the sendgrid-salesforce folder.
+With Sublime Text 3 still open, click "File > Open", and open the sendgrid-apex folder.
 
 ### Create the project on Salesforce
 
-Right click on the sendgrid-salesforce containing folder, and choose "MavensMate > Create MavensMate Project".
+Right click on the sendgrid-apex containing folder, and choose "MavensMate > Create MavensMate Project".
 
 On the next screen enter the following:
 
-* For project name: 'sendgrid-salesforce' 
+* For project name: 'sendgrid-apex' 
 * For username: enter your email address
 * For password: enter your password APPENDED with your salesforce security token. (see above for how to generate the security token) 
 
