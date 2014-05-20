@@ -1,6 +1,6 @@
 # sendgrid-salesforce
 
-This Apex Toolkit allows you to quickly and easily send emails through SendGrid using Salesforce Apex.
+This Apex Toolkit allows you to quickly and easily send emails through [SendGrid](http://sendgrid.com) using [Salesforce Apex](https://developer.salesforce.com/page/Apex).
 
 ```java
 SendGrid sendgrid = new SendGrid('username', 'password');
