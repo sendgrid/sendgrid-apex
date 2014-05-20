@@ -15,7 +15,7 @@ global class SendGrid {
   public String credentialsToWebFormat() {
     String output = '';
 
-    output += '?api_user=' + this.username;
+    output += 'api_user=' + this.username;
     output += '&api_key=' + this.password;
 
     return output;
@@ -24,16 +24,21 @@ global class SendGrid {
   public String send(SendGrid.Email email) {
     String body = this.credentialsToWebFormat() + email.toWebFormat();
 
+    System.debug(body);
+
     HttpRequest req = new HttpRequest();
     HttpResponse res = new HttpResponse();
     Http http = new Http();
 
     req.setEndpoint(API_URL);
     req.setMethod('POST');
+    req.setHeader('Content-Type','application/x-www-form-urlencoded');
     req.setBody(body);
-    req.setCompressed(true); // otherwise we hit a limit of 32000
-
+    req.setHeader('Content-Length',String.valueof(body.length()));
+    
     res = http.send(req);
+
+    System.debug(res.toString()); 
 
     return res.getBody();
   }
@@ -135,7 +140,8 @@ global class SendGrid {
       // updateMissingTo - There needs to be at least 1 to address, 
       // or else the mail won't send.
       if (!this.smtpapi.to.isEmpty() && !String.isBlank(this.fromm)) {
-        output += '&to=' + this.fromm;
+        String encoded = EncodingUtil.urlEncode(this.fromm, ENCODING);
+        output += '&to=' + encoded;
       }
 
       if (!String.isBlank(this.fromm)) {
