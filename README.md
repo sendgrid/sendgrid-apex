@@ -2,23 +2,143 @@
 
 This Apex library allows you to quickly and easily send emails through SendGrid using Salesforce Apex.
 
+<https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
+
 ## Usage
 
 To begin using this library, initialize the SendGrid object with your SendGrid credentials.
 
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
 
 ```java
-code
+SendGrid sendgrid = new SendGrid('username', 'password');
 ```
 
 Add your message details.
 
 ```java
-code
+SendGrid.email email = new SendGrid.Email();
+email.addTo('foo@bar.com');
+email.setFrom('me@bar.com');
+email.setSubject('Subject goes here');
+email.setText('Hello World!');
+email.setHtml('<strong>Hello World!</strong>');
 ```
 
 Send it.
+
+```
+sendgrid.send(email);
+```
+
+### setFrom
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setFrom('foo@bar.com');
+```
+
+### setFromName
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setFromName('Example Lady');
+```
+
+### setReplyTo
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setReplyTo('foo@bar.com');
+```
+
+### Bcc
+
+Use multiple `addTo`s as a superior alternative to `setBcc`.
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addTo('foo@bar.com');
+email.addTo('someotheraddress@bar.com');
+email.addTo('another@another.com');
+...
+```
+
+But if you do still have a need for Bcc you can do the following.
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addBcc('foo@bar.com');
+```
+
+### setSubject
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setSubject('This is a subject');
+```
+
+### setText
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setText('This is some text');
+```
+
+### setHtml
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.setHtml('<h1>This is an html email</h1>');
+```
+
+### addSubstitution
+
+```
+SendGrid.email email = new SendGrid.Email();
+List<String> vals = new List<String> { 'val' };
+email.addSubstitution('sub', vals);
+```
+
+### addUniqueArg
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addUniqueArg('add_unique_argument_key', 'add_unique_argument_value');
+```
+
+### addCategory
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addCategory('Category 1');
+email.addCategory('Category 2');
+```
+
+### addSection
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addSection('set_section_key', 'set_section_value');
+```
+
+### addFilter
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addFtiler('footer', 'text/html', '<strong>boo</strong>');
+```
+
+### Headers
+
+You can add standard email message headers as necessary.
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addTo('foo@bar.com');
+...
+email.addHeader('X-Sent-Using', 'SendGrid-API');
+email.addHeader('X-Transport', 'web');
+```
 
 ## Development
 
