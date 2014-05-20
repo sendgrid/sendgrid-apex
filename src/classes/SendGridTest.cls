@@ -17,7 +17,7 @@ private class SendGridTest {
     system.assertEquals(correct, email.toWebFormat());
   }
 
-  @isTest static void testsetTos() {
+  @isTest static void testSetTos() {
     SendGrid.Email email = new SendGrid.Email();
 
     List<String> tos = new List<String> { 'setTos@mailinator.com' };

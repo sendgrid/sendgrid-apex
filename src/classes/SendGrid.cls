@@ -11,6 +11,32 @@ global class SendGrid {
     this.password = password;
   }
 
+  public String credentialsToWebFormat() {
+    String output = '';
+
+    output += '?api_user=' + this.username;
+    output += '&api_key=' + this.password;
+
+    return output;
+  }
+
+  public String send(SendGrid.Email email) {
+    String body = this.credentialsToWebFormat() + email.toWebFormat();
+
+    HttpRequest req = new HttpRequest();
+    HttpResponse res = new HttpResponse();
+    Http http = new Http();
+
+    req.setEndpoint('http://api.sendgrid.com/api/mail.send.json');
+    req.setMethod('POST');
+    req.setBody(body);
+    req.setCompressed(true); // otherwise we hit a limit of 32000
+
+    res = http.send(req);
+
+    return res.getBody();
+  }
+
   global class Email {
     public Smtpapi.Header smtpapi;
 
