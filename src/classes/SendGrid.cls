@@ -43,7 +43,7 @@ global class SendGrid {
     public String fromm;
     public String fromname;
     public String replyto;
-    private List<String> bcc = new List<String>();
+    public List<String> bcc = new List<String>();
     public String subject;
     public String text;
     public String html;
@@ -131,6 +131,12 @@ global class SendGrid {
     public String toWebFormat() {
       String output = '';
 
+      // updateMissingTo - There needs to be at least 1 to address, 
+      // or else the mail won't send.
+      if (!this.smtpapi.to.isEmpty() && !String.isBlank(this.fromm)) {
+        output += '&to=' + this.fromm;
+      }
+
       if (!String.isBlank(this.fromm)) {
         String encoded = EncodingUtil.urlEncode(this.fromm, ENCODING);
         output += '&from=' + encoded;
@@ -167,6 +173,7 @@ global class SendGrid {
         String encoded = EncodingUtil.urlEncode(this.html, ENCODING);
         output += '&html=' + encoded;
       }
+
 
       if (this.smtpapi.jsonString() != '{}') {
         String encoded = EncodingUtil.urlEncode(this.smtpapi.jsonString(), ENCODING);

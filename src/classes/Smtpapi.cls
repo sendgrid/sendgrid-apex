@@ -2,12 +2,12 @@ global class Smtpapi {
   public Smtpapi() {}
 
   global class Header {
-    private List<String> to = new List<String>();
-    private Map<String, Object> sub = new Map<String, Object>();
-    private Map<String, String> unique_args = new Map<String, String>();
-    private List<String> category = new List<String>();
-    private Map<String, String> section = new Map<String, String>();
-    private Map<String, Map<String, Map<String,String>>> filters = new Map<String, Map<String, Map<String,String>>>();
+    public List<String> to = new List<String>();
+    public Map<String, Object> sub = new Map<String, Object>();
+    public Map<String, String> unique_args = new Map<String, String>();
+    public List<String> category = new List<String>();
+    public Map<String, String> section = new Map<String, String>();
+    public Map<String, Map<String, Map<String,String>>> filters = new Map<String, Map<String, Map<String,String>>>();
 
     public Header() {}
 

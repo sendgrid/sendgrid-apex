@@ -27,6 +27,18 @@ private class SendGridTest {
     system.assertEquals(correct, email.toWebFormat());
   }
 
+  @isTest static void testAddToWithAFrom() {
+    SendGrid.Email email = new SendGrid.Email();
+
+    String address = 'email@example.com';
+    String fromaddress = 'from@mailinator.com';
+    email.addTo(address);
+    email.setFrom(fromaddress);
+
+    String correct = '&to=' + EncodingUtil.urlEncode(fromaddress, ENCODING) + '&from='+EncodingUtil.urlEncode(fromaddress, ENCODING)+'&x-smtpapi='+EncodingUtil.urlEncode('{"to":["email@example.com"]}', ENCODING);
+    system.assertEquals(correct, email.toWebFormat());
+  }
+
   @isTest static void testSetFrom() {
     SendGrid.Email email = new SendGrid.Email();
 
