@@ -5,6 +5,28 @@ private class SendGridTest {
   private static final String PASSWORD = 'password';
   private static final String ENCODING = 'UTF-8';
 
+  @isTest static void testAddTo() {
+    SendGrid.Email email = new SendGrid.Email();
+
+    String address = 'email@example.com';
+    String address2 = 'email2@example.com';
+    email.addTo(address);
+    email.addTo(address2);
+
+    String correct = '&x-smtpapi='+EncodingUtil.urlEncode('{"to":["email@example.com","email2@example.com"]}', ENCODING);
+    system.assertEquals(correct, email.toWebFormat());
+  }
+
+  @isTest static void testsetTos() {
+    SendGrid.Email email = new SendGrid.Email();
+
+    List<String> tos = new List<String> { 'setTos@mailinator.com' };
+    email.setTos(tos);
+
+    String correct = '&x-smtpapi='+EncodingUtil.urlEncode('{"to":["setTos@mailinator.com"]}', ENCODING);
+    system.assertEquals(correct, email.toWebFormat());
+  }
+
   @isTest static void testSetFrom() {
     SendGrid.Email email = new SendGrid.Email();
 

@@ -27,6 +27,16 @@ global class SendGrid {
       this.smtpapi = new Smtpapi.Header();
     }
 
+    public Email addTo(String to) {
+      this.smtpapi.addTo(to);
+      return this;
+    }
+
+    public Email setTos(List<String> tos) {
+      this.smtpapi.setTos(tos);
+      return this;
+    }
+
     public Email setFrom(String email) {
       this.fromm = email;
       return this;

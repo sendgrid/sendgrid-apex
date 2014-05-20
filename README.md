@@ -30,6 +30,22 @@ Send it.
 sendgrid.send(email);
 ```
 
+### addTo
+
+```
+SendGrid.email email = new SendGrid.Email();
+email.addTo('email@example.com');
+email.addTo('email2@example.com');
+```
+
+### setTos
+
+```
+SendGrid.email email = new SendGrid.Email();
+List<String> tos = new List<String> { 'setTos@mailinator.com' };
+email.setTos(tos);
+```
+
 ### setFrom
 
 ```
