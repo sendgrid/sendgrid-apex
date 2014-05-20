@@ -2,7 +2,6 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>SendGrid</members>
-		<members>SendGridSalesforceExample</members>
 		<members>SendGridTest</members>
 		<members>Smtpapi</members>
 		<members>SmtpapiTest</members>
