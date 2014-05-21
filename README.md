@@ -18,7 +18,7 @@ String response = sendgrid.send(email);
 
 To start using the SendGrid Apex Toolkit in your Salesforce Org, install the unmanaged package of the library with the following URL:
 
-<https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
+1.0: <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeIW>
 
 Click Continue -> Next -> Next -> Install.
 
@@ -264,6 +264,37 @@ You're done!
 
 Now go ahead and develop. I recommend [this tutorial](https://github.com/scottmotte/apex-hello-world) or [this blog post](http://sendgrid.com/blog/hello-world-apex/) for learning some basics of developing with Apex.
 
+### Additional: Creating the unmanaged package.
+
+Search for "packages".
+
+Click "Create > Packages".
+
+Click "New" under Packages.
+
+Name the package "sendgrid-apex" and click save.
+
+On the list of packages screen, now click "sendgrid-apex".
+
+On the next screen under components, click "Add".
+
+On the next screeen choose "Apex Class" under Component Type.
+
+Check all the SendGrid related classes. 
+
+Then click "Add to Package".
+
+Then on the package show page, click "Upload".
+
+On the next screen, enter "052114-sendgrid-apex" for the name (change the mm/dd/yy to the current).
+
+Set version number to 1.0. 
+
+Set the description to: "This Apex Toolkit allows you to quickly and easily send emails through SendGrid using Salesforce Apex."
+
+Scroll down to the very bottom and click "Upload".
+
+Copy and paste the installation url and place in the README.
 ## Contributing
 
 1. Fork it
