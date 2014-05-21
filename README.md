@@ -16,20 +16,11 @@ String response = sendgrid.send(email);
 
 ## Installation
 
-#### 1. Install the Package
-
 To start using the SendGrid Apex Toolkit in your Salesforce Org, install the unmanaged package of the library with the following URL:
 
 <https://login.salesforce.com/packaging/installPackage.apexp?p0=04tF0000000KeAR>
 
 Click Continue -> Next -> Next -> Install.
-
-#### 2. Add Remote Site
-
-Interacting with the SendGrid API requires a new remote site setting.
-
-* Add a remote site for SendGrid API site in the "Administration Setup > Security Controls > Remote Site Setting > New Remote Site".
-* Create new remote site and set https://api.sendgrid.com in the Remote Site URL.
 
 ## Usage
 
