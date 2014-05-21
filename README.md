@@ -44,13 +44,13 @@ email.setHtml('<strong>Hello World!</strong>');
 
 Send it.
 
-```
+```java
 String response = sendgrid.send(email);
 ```
 
 ### addTo
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addTo('email@example.com');
 email.addTo('email2@example.com');
@@ -58,7 +58,7 @@ email.addTo('email2@example.com');
 
 ### setTos
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 List<String> tos = new List<String> { 'setTos@mailinator.com' };
 email.setTos(tos);
@@ -66,21 +66,21 @@ email.setTos(tos);
 
 ### setFrom
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setFrom('foo@bar.com');
 ```
 
 ### setFromName
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setFromName('Example Lady');
 ```
 
 ### setReplyTo
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setReplyTo('foo@bar.com');
 ```
@@ -89,7 +89,7 @@ email.setReplyTo('foo@bar.com');
 
 Use multiple `addTo`s as a superior alternative to `setBcc`.
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addTo('foo@bar.com');
 email.addTo('someotheraddress@bar.com');
@@ -99,35 +99,35 @@ email.addTo('another@another.com');
 
 But if you do still have a need for Bcc you can do the following.
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addBcc('foo@bar.com');
 ```
 
 ### setSubject
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setSubject('This is a subject');
 ```
 
 ### setText
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setText('This is some text');
 ```
 
 ### setHtml
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.setHtml('<h1>This is an html email</h1>');
 ```
 
 ### addSubstitution
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 List<String> vals = new List<String> { 'val' };
 email.addSubstitution('sub', vals);
@@ -135,14 +135,14 @@ email.addSubstitution('sub', vals);
 
 ### addUniqueArg
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addUniqueArg('add_unique_argument_key', 'add_unique_argument_value');
 ```
 
 ### addCategory
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addCategory('Category 1');
 email.addCategory('Category 2');
@@ -150,28 +150,42 @@ email.addCategory('Category 2');
 
 ### addSection
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addSection('set_section_key', 'set_section_value');
 ```
 
 ### addFilter
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addFtiler('footer', 'text/html', '<strong>boo</strong>');
 ```
 
-### Headers
+### addHeader
 
 You can add standard email message headers as necessary.
 
-```
+```java
 SendGrid.email email = new SendGrid.Email();
 email.addTo('foo@bar.com');
 ...
 email.addHeader('X-Sent-Using', 'SendGrid-API');
 email.addHeader('X-Transport', 'web');
+```
+
+### addAttachmentStream
+
+```java
+SendGrid.email email = new SendGrid.Email();
+
+// as a string
+email.addAttachmentStream('text.txt', 'somerandomcontentyouwant');
+
+// as a blob
+String text = 'This is an attachment.';
+Blob as_blob = Blob.valueof(text);
+email.addAttachmentStream('text.txt', as_blob);
 ```
 
 ## Development

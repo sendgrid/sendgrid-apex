@@ -169,4 +169,26 @@ private class SendGridTest {
     String correct = '&headers='+EncodingUtil.urlEncode('{"key":"value","other":"other-value"}', ENCODING);
     system.assertEquals(correct, email.toWebFormat());
   }
+
+  @isTest static void testAddAttachmentStream() {
+    SendGrid.Email email = new SendGrid.Email();
+
+    String text = '{"key":"value","other":"other-value"}';
+    email.addAttachmentStream('text.txt', text);
+
+    String correct = '&files[text.txt]='+EncodingUtil.urlEncode(text, ENCODING);
+    system.assertEquals(correct, email.toWebFormat());
+  }
+
+  @isTest static void testAddAttachmentStreamAsBlob() {
+    SendGrid.Email email = new SendGrid.Email();
+
+    String text = 'This is an attachment.';
+    Blob as_blob = Blob.valueof(text);
+
+    email.addAttachmentStream('text.txt', as_blob);
+
+    String correct = '&files[text.txt]='+EncodingUtil.urlEncode(text, ENCODING);
+    system.assertEquals(correct, email.toWebFormat());
+  }
 }

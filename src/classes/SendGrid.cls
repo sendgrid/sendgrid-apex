@@ -54,6 +54,7 @@ global class SendGrid {
     public String text;
     public String html;
     public Map<String, String> headers = new Map<String, String>();
+    public Map<String, String> files = new Map<String, String>();
 
     public Email() {
       this.smtpapi = new Smtpapi.Header();
@@ -134,6 +135,16 @@ global class SendGrid {
       return this;
     }
 
+    public Email addAttachmentStream(String filename, String content) {
+      this.files.put(filename, content);
+      return this;
+    }
+
+    public Email addAttachmentStream(String filename, Blob content) {
+      this.files.put(filename, content.toString());
+      return this;
+    }
+
     public String toWebFormat() {
       String output = '';
 
@@ -191,6 +202,14 @@ global class SendGrid {
         String serialized_headers = JSON.serialize(this.headers);
         String encoded = EncodingUtil.urlEncode(serialized_headers, ENCODING);
         output += '&headers=' + encoded;
+      }
+
+      if (!this.files.isEmpty()) {
+        for (String filename : this.files.keySet()){
+          String value = this.files.get(filename);
+          String encoded = EncodingUtil.urlEncode(value, ENCODING);
+          output += '&files['+filename+']=' + encoded;
+        }
       }
 
       return output;
