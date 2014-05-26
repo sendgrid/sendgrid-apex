@@ -2,8 +2,8 @@ global class SendGrid {
   private static final String ENCODING = 'UTF-8';
   private static final String API_URL = 'https://api.sendgrid.com/api/mail.send.json';
   
-  private String username;
-  private String password;
+  private transient String username;
+  private transient String password;
 
   private List<string> tos = new List<String>();
 
