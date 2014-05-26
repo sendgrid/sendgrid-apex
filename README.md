@@ -284,6 +284,12 @@ Check all the SendGrid related classes.
 
 Then click "Add to Package".
 
+Then click "Add" again.
+
+This time on the next screen choose "Remote Site".
+
+Check the SendGrid Remote Site, and click "Add to Package".
+
 Then on the package show page, click "Upload".
 
 On the next screen, enter "052114-sendgrid-apex" for the name (change the mm/dd/yy to the current).

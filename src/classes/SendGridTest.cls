@@ -5,6 +5,26 @@ private class SendGridTest {
   private static final String PASSWORD = 'password';
   private static final String ENCODING = 'UTF-8';
 
+  @isTest static void credentialsToWebFormat() {
+    Sendgrid sendgrid = new SendGrid('username', 'password');
+    
+    String correct = 'api_user=username&api_key=password';
+    system.assertEquals(correct, sendgrid.credentialsToWebFormat());
+  }
+
+  @isTest static void testSend() {
+    SendGrid sendgrid = new SendGrid('username', 'password');
+    SendGrid.Email email = new SendGrid.Email();
+    email.addTo('to@mailinator.com');
+    email.setFrom('from@mailinator.com');
+    email.setSubject('Example');
+    email.setText('Example text');
+
+    Test.setMock(HttpCalloutMock.class, new SendGridResponseMock());
+    SendGrid.SendGridResponse response = sendgrid.send(email);
+    //system.assertEquals()
+  }
+
   @isTest static void testAddTo() {
     SendGrid.Email email = new SendGrid.Email();
 

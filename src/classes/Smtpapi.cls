@@ -44,7 +44,6 @@ global class Smtpapi {
     public String jsonString() {
       Map<String, Object> data = this.toMap();
       return JSON.serialize(data);
-      // serializePretty
     }
 
     public Header addTo(String to) {

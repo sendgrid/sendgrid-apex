@@ -1,3 +1,4 @@
+
 global class SendGrid {
   private static final String ENCODING = 'UTF-8';
   private static final String API_URL = 'https://api.sendgrid.com/api/mail.send.json';
@@ -21,11 +22,10 @@ global class SendGrid {
     return output;
   }
 
-  public String send(SendGrid.Email email) {
+  public SendGridResponse send(SendGrid.Email email) {
     String body = this.credentialsToWebFormat() + email.toWebFormat();
 
     HttpRequest req = new HttpRequest();
-    HttpResponse res = new HttpResponse();
     Http http = new Http();
 
     req.setEndpoint(API_URL);
@@ -33,10 +33,13 @@ global class SendGrid {
     req.setHeader('Content-Type','application/x-www-form-urlencoded');
     req.setBody(body);
     req.setHeader('Content-Length',String.valueof(body.length()));
-    
-    res = http.send(req);
 
-    return res.getBody();
+    try {
+      HttpResponse res = http.send(req);
+      return new SendGridResponse(res.getStatusCode(), res.getBody());
+    } catch (Exception e) {
+      throw new SendGridException(e);
+    }
   }
 
   global class Email {
@@ -209,6 +212,20 @@ global class SendGrid {
       }
 
       return output;
+    }
+  }
+
+  public class SendGridException extends Exception {}
+
+  public class SendGridResponse {
+    public Integer code { get; private set; }
+    public Boolean success { get; private set; }
+    public String message { get; private set; }
+
+    public SendGridResponse(Integer code, String body) {
+      this.code = code;
+      this.success = code == 200;
+      this.message = body;
     }
   }
 }
