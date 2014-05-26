@@ -24,8 +24,6 @@ global class SendGrid {
   public String send(SendGrid.Email email) {
     String body = this.credentialsToWebFormat() + email.toWebFormat();
 
-    System.debug(body);
-
     HttpRequest req = new HttpRequest();
     HttpResponse res = new HttpResponse();
     Http http = new Http();
@@ -37,8 +35,6 @@ global class SendGrid {
     req.setHeader('Content-Length',String.valueof(body.length()));
     
     res = http.send(req);
-
-    System.debug(res.toString()); 
 
     return res.getBody();
   }
