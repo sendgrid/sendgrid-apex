@@ -234,7 +234,7 @@ Save and close that file.
 
 ```
 cd /Users/your_username/code/salesforce
-git clone https://github.com/scottmotte/sendgrid-apex.git
+git clone https://github.com/sendgrid/sendgrid-apex.git
 ```
 ### Open the project
 
