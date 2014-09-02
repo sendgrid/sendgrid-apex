@@ -3,7 +3,7 @@ global class Smtpapi {
 
   global class Header {
     public List<String> to = new List<String>();
-    public Map<String, Object> sub = new Map<String, Object>();
+    public Map<String, List<String>> sub = new Map<String, List<String>>();
     public Map<String, String> unique_args = new Map<String, String>();
     public List<String> category = new List<String>();
     public Map<String, String> section = new Map<String, String>();
@@ -57,14 +57,11 @@ global class Smtpapi {
     }
 
     public Header addSubstitution(String key, List<String> val) {
-      for (Integer i = 0; i < val.size(); i++) {
-        List<String> val_in_array = new List<String> { val[i] };
-        this.sub.put(key, val_in_array);
-      }
+      this.sub.put(key, val);
       return this;
     }
 
-    public Header setSubstitutions(Map<String, Object> substitutions) {
+    public Header setSubstitutions(Map<String, List<String>> substitutions) {
       this.sub = substitutions;
       return this;
     }
