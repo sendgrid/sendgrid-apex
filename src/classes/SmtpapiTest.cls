@@ -25,19 +25,22 @@ private class SmtpapiTest {
   @isTest static void testAddSubstitution() {
     Smtpapi.Header header = new Smtpapi.Header();
 
-    List<String> vals = new List<String> { 'val' };
-    header.addSubstitution('sub', vals);
-    system.assertEquals('{\"sub\":{\"sub\":[\"val\"]}}', header.jsonString());
+    List<String> firstNames = new List<String> { 'Mike', 'Peter', 'Greg', 'Bobby' };
+    header.addSubstitution('-firstName-', firstNames);
+    List<String> lastNames = new List<String> { 'Brady1', 'Brady2', 'Brady3', 'Brady4' };
+    header.addSubstitution('-lastName-', lastNames);
+    system.assertEquals('{\"sub\":{\"-lastName-\":[\"Brady1\",\"Brady2\",\"Brady3\",\"Brady4\"],\"-firstName-\":[\"Mike\",\"Peter\",\"Greg\",\"Bobby\"]}}', header.jsonString());
   }
 
   @isTest static void testSetSubstitutions() {
     Smtpapi.Header header = new Smtpapi.Header();
 
-    List<String> vals = new List<String> { 'val' };
-    Map<String, Object> substitutions = new Map<String, Object>{ 'sub' => vals };
+    List<String> firstNames = new List<String> { 'Mike', 'Peter', 'Greg', 'Bobby' };
+    List<String> lastNames = new List<String> { 'Brady1', 'Brady2', 'Brady3', 'Brady4' };
+    Map<String, List<String>> substitutions = new Map<String, List<String>>{ '-firstName-' => firstNames, '-lastName-' => lastNames };
     header.setSubstitutions(substitutions);
 
-    system.assertEquals('{\"sub\":{\"sub\":[\"val\"]}}', header.jsonString());
+    system.assertEquals('{\"sub\":{\"-lastName-\":[\"Brady1\",\"Brady2\",\"Brady3\",\"Brady4\"],\"-firstName-\":[\"Mike\",\"Peter\",\"Greg\",\"Bobby\"]}}', header.jsonString());
   }
 
   @isTest static void testAddUniqueArg() {
