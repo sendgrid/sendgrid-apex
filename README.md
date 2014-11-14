@@ -190,7 +190,7 @@ email.addAttachmentStream('text.txt', as_blob);
 
 ## Development
 
-Getting your development environment setup to code on this project is difficult. The following explains how.
+Getting your development environment setup takes some careful steps. So, we have explained the process here to save you some time:
 
 ### Setup Salesforce.com
 
@@ -198,7 +198,7 @@ Getting your development environment setup to code on this project is difficult.
 
 You'll receive an email from Salesforce with a link to confirm. Click it.
 
-On the next screen, set your password. Yeah, it's an odd flow, but it's salesforce so what do you expect.
+On the next screen, set your password.
 
 You now have a developer account.
 
