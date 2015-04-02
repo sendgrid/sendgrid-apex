@@ -57,10 +57,7 @@ global class Smtpapi {
     }
 
     public Header addSubstitution(String key, List<String> val) {
-      for (Integer i = 0; i < val.size(); i++) {
-        List<String> val_in_array = new List<String> { val[i] };
-        this.sub.put(key, val_in_array);
-      }
+      this.sub.put(key, val);
       return this;
     }
 
