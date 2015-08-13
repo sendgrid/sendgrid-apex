@@ -11,7 +11,7 @@ email.setFrom('me@bar.com');
 email.setSubject('Subject goes here');
 email.setText('Hello World!');
 
-String response = sendgrid.send(email);
+SendGrid.SendGridResponse response = sendgrid.send(email);
 ```
 
 ## Installation
@@ -45,7 +45,7 @@ email.setHtml('<strong>Hello World!</strong>');
 Send it.
 
 ```java
-String response = sendgrid.send(email);
+SendGrid.SendGridResponse response = sendgrid.send(email);
 ```
 
 ### addTo
